@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Book;
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+    $books = Book::all();
+    return view('home', [
+        'books' => $books,
+    ]);
+})->name('home');
 
 Route::get('/livros', function() {
     $books = [
